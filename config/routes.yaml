@@ -3,3 +3,28 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+
+lightsaml_sp:
+    resource: "@LightSamlSpBundle/Resources/config/routing.yml"
+    prefix: saml
+
+common:
+    resource: "@CommonBundle/Controller"
+    type: attribute
+
+composer:
+    resource: "@ComposerDependencyListBundle/Controller"
+    type: attribute
+    prefix: /dependencies
+
+logout:
+    path: /logout
+
+logout_success:
+    path: /logout/success
+    defaults: { _controller: SchulIT\CommonBundle\Controller\LogoutController::logout }
+
+dh_doctrine_audit:
+    resource: "@DHAuditorBundle/Controller/"
+    type: attribute
+    prefix: /admin

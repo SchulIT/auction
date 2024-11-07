@@ -1,0 +1,30 @@
+{% extends "main.html.twig" %}
+
+{% block title %}{{ 'profile.label'|trans }}{% endblock %}
+
+{% block breadcrumb %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('dashboard') }}">{{ 'dashboard.label'|trans }}</a></li>
+        <li class="breadcrumb-item">{{ block('title') }}</li>
+    </ol>
+{% endblock %}
+
+{% block content %}
+    {{ form_start(form) }}
+
+    <div class="card">
+        <div class="card-header">{{ 'profile.label'|trans }}</div>
+        <div class="card-body">
+            {% if needs_completion %}
+                <div class="bs-callout bs-callout-danger mt-0">
+                    <h5>{{ 'profile.not_complete.title'|trans }}</h5>
+                    <p>{{ 'profile.not_complete.message'|trans }}</p>
+                </div>
+            {% endif %}
+
+            {{ form_widget(form) }}
+        </div>
+    </div>
+
+    {{ form_end(form) }}
+{% endblock %}

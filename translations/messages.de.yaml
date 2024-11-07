@@ -1,0 +1,96 @@
+label:
+  firstname: Vorname
+  lastname: Nachname
+  email: E-Mail-Adresse
+  grade:
+    label: Klasse
+    help: Wenn das Kind in mehreren Klassen ist, ist es ausreichend, eine Klasse anzugeben.
+
+  title: Titel
+  description: Beschreibung
+  image: Bild
+  start_bid:
+    label: Startpreis
+    help: Legt den Startpreis der Auktion fest.
+  minimum_bid:
+    label: Mindestgebot
+    help: Gibt die Preisdifferenz an, um die ein neues Gebot das Höchstgebot überschreiten muss.
+  only_one_bid_allowed:
+    label: Nur ein Gebot zulassen
+    help: Wenn diese Option aktiv ist, wird pro Benutzer nur ein Gebot zugelassen. Wenn jemand ein zweites Gebot abgibt, wird das erste Gebot gelöscht.
+  quantity:
+    label: Anzahl
+    help: Legt die Anzahl der zu versteigernden Gegenstände fest. Die ersten N Höchstbieter erhalten jeweils den Zuschlag.
+  start: Beginn
+  end: Ende
+
+  auction: Auktion
+  user: Benutzer
+  created_at: erstellt am
+
+  bids: Gebote
+
+
+  amount: Betrag
+
+warning:
+  label: Wichtiger Hinweis
+
+profile:
+  label: Konto-Einstellungen
+  not_complete:
+    title: Profil unvollständig
+    message: Das Profil muss vervollständigt werden, bevor fortgefahren werden kann.
+
+dashboard:
+  auctions:
+    active: läuft gerade
+    past: beendet
+    upcoming: demnächst
+
+    starts: startet %date%
+    ends: endet %date%
+    ended: endete %date%
+
+    link: Zur Auktion
+
+auction:
+  details:
+    label: Details
+    start: Beginn
+    end: Ende
+    start_bid: Startgebot
+  current_bid:
+    label: Aktuelles Gebot
+  bids:
+    label: Gebote
+    info: "{1} Das höchste Gebot gewinnt|]1,Inf[ Die höchsten %count% Gebote gewinnen."
+    own: eigenes Gebot
+  bid:
+    label: Neues Gebot
+    button: Gebot abgeben
+    success: Gebot erfolgreich abgegeben
+    only_one_bid_allowed: Pro Benutzer ist nur ein Gebot erlaubt. Das bisherige Gebot wird gelöscht und durch das neue Gebot ersetzt.
+
+    not_active: Die Auktion ist aktuell nicht aktiv. Daher kann kein Gebot abgegeben werden.
+    invalid_amount: Der angegebene Betrag ist zu gering. Bitte den Mindestbetrag beachten.
+
+    minimum_amount: Mindestgebot
+
+    confirm:
+      label: Gebot bestätigen
+      message: Bitte das aktuelle Gebot bestätigen.
+      bid: Abgegebenes Gebot
+      confirm: Gebot bestätigen
+      cancel: Abbrechen
+
+admin:
+  label: Verwaltung
+  dashboard:
+    sum_bids: Einnahmen
+    count:
+      all: Auktionen
+      active: aktive Auktionen
+      past: vergangene Auktionen
+      upcoming: anstehende Auktionen
+      bids: Gebote

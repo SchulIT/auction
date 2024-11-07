@@ -1,0 +1,92 @@
+{% extends "main.html.twig" %}
+
+{% block title %}{{ 'dashboard.label'|trans }}{% endblock %}
+
+{% block breadcrumb %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('dashboard') }}">{{ 'dashboard.label'|trans }}</a></li>
+    </ol>
+{% endblock %}
+
+{% block content %}
+    {% if auctions|length > 0 %}
+        <div class="row row-cols-1 row-cols-md-4 g-4 mb-2">
+            {% for auction in auctions %}
+                {% set upcoming = false %}
+                {% set past = false %}
+                {% set active = false %}
+
+                {% if auction.start <= now and now <= auction.end %}
+                    {% set active = true %}
+                {% elseif auction.end < now %}
+                    {% set past = true %}
+                {% elseif auction.start > now %}
+                    {% set upcoming = true %}
+                {% endif %}
+
+                <div class="col">
+                    <div class="card h-100">
+                        {% if auction.imageFileName is not null %}
+                            <a href="{{ path('show_auction', { uuid: auction.uuid }) }}">
+                                <img src="/auctions/{{ auction.imageFileName }}" class="card-img-top" alt="{{ auction.title }}">
+                            </a>
+                        {% endif %}
+                        {% set bid = highestBid(auction) %}
+                        {% set currentBid = auction.startBid %}
+                        {% if bid is not null %}
+                            {% set currentBid = bid.amount %}
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title d-flex">
+                                <span class="flex-fill">
+                                    <a href="{{ path('show_auction', { uuid: auction.uuid }) }}">{{ auction.title }}</a>
+
+                                    {% if upcoming %}
+                                        <span class="badge text-bg-warning">{{ 'dashboard.auctions.upcoming'|trans }}</span>
+                                    {% endif %}
+
+                                    {% if past %}
+                                        <span class="badge text-bg-danger">{{ 'dashboard.auctions.past'|trans }}</span>
+                                    {% endif %}
+
+                                    {% if active %}
+                                        <span class="badge text-bg-success">{{ 'dashboard.auctions.active'|trans }}</span>
+                                    {% endif %}
+                                </span>
+
+                                <span>
+                                    <span class="badge text-bg-primary">{{ currentBid|to_money|money_format }}</span>
+                                </span>
+                            </h5>
+                            <p class="card-text">
+                                {{ auction.description[0:100]|markdown_to_html|striptags }}...
+                            </p>
+
+                            <a href="{{ path('show_auction', { uuid: auction.uuid }) }}" class="btn btn-primary btn-sm">
+                                {{ 'dashboard.auctions.link'|trans }}
+                            </a>
+                        </div>
+
+                        <div class="list-group list-group-flush">
+                            {% if upcoming %}
+                                <div class="list-group-item text-muted">
+                                    {{ 'dashboard.auctions.starts'|trans({'%date%': auction.start|format_datetime}) }}
+                                </div>
+                            {% endif %}
+                            {% if active %}
+                                <div class="list-group-item text-muted">
+                                    {{ 'dashboard.auctions.ends'|trans({'%date%': auction.start|format_datetime}) }}
+                                </div>
+                            {% endif %}
+                            {% if past %}
+                                <div class="list-group-item text-muted">
+                                    {{ 'dashboard.auctions.ended'|trans({'%date%': auction.start|format_datetime}) }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,24 @@
+{% if ea.crud.currentAction == 'detail' %}
+    {% if field.value is not empty %}
+        <div class="card">
+            <div class="list-group list-group-flush">
+                {% for bid in field.value %}
+                    <div class="list-group-item">
+                        {{ bid.amount|to_money|money_format }}
+
+                        {% set url = ea_url()
+                            .setController('App\\Controller\\Admin\\UserCrudController')
+                            .setAction('detail')
+                            .setEntityId(bid.user.id)
+                        %}
+
+                        <i class="fas fa-user ms-2"></i> <a href="{{ url }}">{{ bid.user.username }}</a>
+                    </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+{% else %}
+    {{ field.value|length }}
+{% endif %}

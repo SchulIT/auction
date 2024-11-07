@@ -1,0 +1,56 @@
+{% extends '@EasyAdmin/layout.html.twig' %}
+
+{% block main %}
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+
+        <div class="col">
+            <div class="card">
+                <div class="card-body summary-box">
+                    <h3>{{ sumWinningBids|to_money|money_format }}</h3>
+
+                    <p>{{ 'admin.dashboard.sum_bids'|trans }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card">
+                <div class="card-body summary-box">
+                    <h3>{{ count }}</h3>
+
+                    <p>{{ 'admin.dashboard.count.all'|trans }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card">
+                <div class="card-body summary-box">
+                    <h3>{{ countActive }}</h3>
+
+                    <p>{{ 'admin.dashboard.count.active'|trans }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card">
+                <div class="card-body summary-box">
+                    <h3>{{ countPast }}</h3>
+
+                    <p>{{ 'admin.dashboard.count.past'|trans }}</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card">
+                <div class="card-body summary-box">
+                    <h3>{{ countUpcoming }}</h3>
+
+                    <p>{{ 'admin.dashboard.count.upcoming'|trans }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock main %}

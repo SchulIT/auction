@@ -1,0 +1,147 @@
+{% extends "main.html.twig" %}
+
+{% block title %}{{ auction.title }}{% endblock %}
+
+{% block breadcrumb %}
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="{{ path('dashboard') }}">{{ 'dashboard.label'|trans }}</a></li>
+        <li class="breadcrumb-item">{{ block('title') }}</li>
+    </ol>
+{% endblock %}
+
+{% block content %}
+    <div class="container-fluid px-0">
+        <div class="row">
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ auction.title }}</h5>
+                        {{ auction.description|markdown_to_html  }}
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ 'auction.bids.label'|trans }}</h5>
+
+                        <p>{{ 'auction.bids.info'|trans({'%count%': auction.quantity}) }}</p>
+
+                        {% if bids is empty %}
+
+                        {% endif %}
+                    </div>
+                    {% if bids is not empty %}
+                        <div class="list-group list-group-flush">
+                            {% for bid in bids %}
+                                <div class="list-group-item">
+                                    {{ bid.amount|to_money|money_format }}
+
+                                    {% if bid.user == app.user %}
+                                        <span class="badge text-bg-primary">{{ 'auction.bids.own'|trans }}</span>
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                </div>
+
+                {% if not isActive %}
+                    <div class="bs-callout bs-callout-info">
+                        <h5>{{ 'info.label'|trans }}</h5>
+                        <p>{{ 'auction.bid.not_active'|trans }}</p>
+                    </div>
+                {% endif %}
+
+                {% if form is not null %}
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ 'auction.bid.label'|trans }}</h5>
+
+                            {% if auction.quantity > 1 and auction.onlyOneBidAllowed %}
+                                <div class="bs-callout bs-callout-warning">
+                                    <h5>{{ 'warning.label'|trans }}</h5>
+                                    <p>{{ 'auction.bid.only_one_bid_allowed'|trans }}</p>
+                                </div>
+                            {% endif %}
+
+                            {{ form_start(form) }}
+
+                            <p>
+                                <span class="fw-bold">{{ 'auction.bid.minimum_amount'|trans }}</span>
+
+                                {{ minimumAmount|to_money|money_format }}
+                            </p>
+
+                            {{ form_widget(form) }}
+
+                            <button type="submit" class="btn btn-primary btn-sm">
+                                {{ 'auction.bid.button'|trans }}
+                            </button>
+
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+
+            <div class="col-md-3">
+                {% if auction.imageFileName is not null %}
+                <div class="card">
+                    <img src="/auctions/{{ auction.imageFileName }}" class="card-img-top" alt="{{ auction.title }}">
+                </div>
+                {% endif %}
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ 'auction.details.label'|trans }}</h5>
+                        <p>
+                            <span class="text-muted">{{ 'auction.details.start'|trans }}</span>
+                            {{ auction.start|format_datetime }}
+                        </p>
+
+                        <p>
+                            <span class="text-muted">{{ 'auction.details.end'|trans }}</span>
+                            {{ auction.end|format_datetime }}
+                        </p>
+
+                        <p>
+                            <span class="text-muted">{{ 'auction.details.start_bid'|trans }}</span>
+                            {{ auction.startBid|to_money|money_format }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+
+    <div class="modal" tabindex="-1" id="confirm-bid">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">{{ 'auction.bid.confirm.label'|trans }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>{{ 'auction.bid.confirm.message'|trans }}</p>
+
+                    <p>
+                        {{ 'auction.bid.confirm.bid'|trans }}
+
+                        <span class="fw-bold">
+                            <span class="bid"></span>€
+                        </span>
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ 'auction.bid.confirm.cancel'|trans }}</button>
+                    <button type="button" class="btn btn-primary confirm">{{ 'auction.bid.confirm.confirm'|trans }}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
