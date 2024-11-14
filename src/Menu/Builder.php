@@ -4,10 +4,9 @@ namespace App\Menu;
 
 use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
-use SchulIT\CommonBundle\Helper\DateHelper;
 
 readonly class Builder {
-    public function __construct(private FactoryInterface $factory, private DateHelper $dateHelper)
+    public function __construct(private FactoryInterface $factory)
     {
     }
 
@@ -15,10 +14,15 @@ readonly class Builder {
         $menu = $this->factory->createItem('root')
             ->setChildrenAttribute('class', 'navbar-nav me-auto');
 
-        $menu->addChild('dashboard.label', [
-            'route' => 'dashboard'
+        $menu->addChild('auction.overview.label', [
+            'route' => 'auctions'
         ])
-            ->setExtra('icon', 'fa fa-home');
+            ->setExtra('icon', 'fa-solid fa-money-bill-trend-up');
+
+        $menu->addChild('profile.label', [
+            'route' => 'profile'
+        ])
+            ->setExtra('icon', 'fa-regular fa-address-card');
 
         return $menu;
     }

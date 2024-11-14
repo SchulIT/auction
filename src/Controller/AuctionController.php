@@ -9,6 +9,7 @@ use App\Entity\Auction;
 use App\Entity\Bid;
 use App\Entity\User;
 use App\Form\BidType;
+use App\Repository\AuctionRepositoryInterface;
 use App\Security\Voter\AuctionVoter;
 use SchulIT\CommonBundle\Helper\DateHelper;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
@@ -18,7 +19,29 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\CurrentUser;
 
+#[Route('/auction')]
 class AuctionController extends AbstractController {
+
+    #[Route(name: 'auctions')]
+    public function index(AuctionRepositoryInterface $auctionRepository, DateHelper $dateHelper): Response {
+        $now = $dateHelper->getNow();
+        $past = $auctionRepository->findPast($now);
+        $upcoming = $auctionRepository->findUpcoming($now);
+        $active = $auctionRepository->findActive($now);
+
+        $compareFunc = function (Auction $a, Auction $b)  {
+            return $a->getEnd() <=> $b->getEnd();
+        };
+
+        usort($past, $compareFunc);
+        usort($upcoming, $compareFunc);
+        usort($active, $compareFunc);
+
+        return $this->render('dashboard/index.html.twig', [
+            'auctions' => array_merge($active, $upcoming, $past),
+            'now' => $dateHelper->getNow(),
+        ]);
+    }
 
     #[Route('/{uuid}', name: 'show_auction')]
     public function showAuction(#[MapEntity(mapping: ['uuid' => 'uuid'])] Auction $auction,

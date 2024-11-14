@@ -54,6 +54,10 @@ class AdminMenuBuilder extends AbstractMenuBuilder {
                 ->setExtra('icon', 'fas fa-clipboard-list');
         }
 
+        if(count($menu->getChildren()) === 0) {
+            $root->removeChild('admin');
+        }
+
         return $root;
     }
 }

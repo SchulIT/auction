@@ -42,15 +42,15 @@
                                     <a href="{{ path('show_auction', { uuid: auction.uuid }) }}">{{ auction.title }}</a>
 
                                     {% if upcoming %}
-                                        <span class="badge text-bg-warning">{{ 'dashboard.auctions.upcoming'|trans }}</span>
+                                        <span class="badge text-bg-warning">{{ 'auction.overview.upcoming'|trans }}</span>
                                     {% endif %}
 
                                     {% if past %}
-                                        <span class="badge text-bg-danger">{{ 'dashboard.auctions.past'|trans }}</span>
+                                        <span class="badge text-bg-danger">{{ 'auction.overview.past'|trans }}</span>
                                     {% endif %}
 
                                     {% if active %}
-                                        <span class="badge text-bg-success">{{ 'dashboard.auctions.active'|trans }}</span>
+                                        <span class="badge text-bg-success">{{ 'auction.overview.active'|trans }}</span>
                                     {% endif %}
                                 </span>
 
@@ -63,24 +63,24 @@
                             </p>
 
                             <a href="{{ path('show_auction', { uuid: auction.uuid }) }}" class="btn btn-primary btn-sm">
-                                {{ 'dashboard.auctions.link'|trans }}
+                                {{ 'auction.overview.link'|trans }}
                             </a>
                         </div>
 
                         <div class="list-group list-group-flush">
                             {% if upcoming %}
                                 <div class="list-group-item text-muted">
-                                    {{ 'dashboard.auctions.starts'|trans({'%date%': auction.start|format_datetime}) }}
+                                    {{ 'auction.overview.starts'|trans({'%date%': auction.start|format_datetime}) }}
                                 </div>
                             {% endif %}
                             {% if active %}
                                 <div class="list-group-item text-muted">
-                                    {{ 'dashboard.auctions.ends'|trans({'%date%': auction.start|format_datetime}) }}
+                                    {{ 'auction.overview.ends'|trans({'%date%': auction.start|format_datetime}) }}
                                 </div>
                             {% endif %}
                             {% if past %}
                                 <div class="list-group-item text-muted">
-                                    {{ 'dashboard.auctions.ended'|trans({'%date%': auction.start|format_datetime}) }}
+                                    {{ 'auction.overview.ended'|trans({'%date%': auction.start|format_datetime}) }}
                                 </div>
                             {% endif %}
                         </div>

@@ -38,12 +38,15 @@ warning:
 
 profile:
   label: Konto-Einstellungen
+  save: speichern
   not_complete:
     title: Profil unvollständig
     message: Das Profil muss vervollständigt werden, bevor fortgefahren werden kann.
 
-dashboard:
-  auctions:
+auction:
+  overview:
+    label: Auktionen
+
     active: läuft gerade
     past: beendet
     upcoming: demnächst
@@ -54,7 +57,6 @@ dashboard:
 
     link: Zur Auktion
 
-auction:
   details:
     label: Details
     start: Beginn
