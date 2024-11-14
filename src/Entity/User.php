@@ -67,29 +67,29 @@ class User implements UserInterface {
         return $this;
     }
 
-    public function getFirstname(): string {
+    public function getFirstname(): ?string {
         return $this->firstname;
     }
 
-    public function setFirstname(string $firstname): User {
+    public function setFirstname(?string $firstname): User {
         $this->firstname = $firstname;
         return $this;
     }
 
-    public function getLastname(): string {
+    public function getLastname(): ?string {
         return $this->lastname;
     }
 
-    public function setLastname(string $lastname): User {
+    public function setLastname(?string $lastname): User {
         $this->lastname = $lastname;
         return $this;
     }
 
-    public function getEmail(): string {
+    public function getEmail(): ?string {
         return $this->email;
     }
 
-    public function setEmail(string $email): User {
+    public function setEmail(?string $email): User {
         $this->email = $email;
         return $this;
     }
