@@ -66,7 +66,7 @@ auction:
     label: Aktuelles Gebot
   bids:
     label: Gebote
-    info: "{1} Das höchste Gebot gewinnt|]1,Inf[ Die höchsten %count% Gebote gewinnen."
+    info: "{1} Das höchste Gebot erhält den Zuschlag|]1,Inf[ Die %count% höchsten Gebote erhalten den Zuschlag."
     own: eigenes Gebot
   bid:
     label: Neues Gebot
