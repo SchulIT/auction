@@ -79,7 +79,7 @@ readonly class BidManager {
     public function getHighestBid(Auction $auction): ?Bid {
         $highestBids = $this->getHighestBids($auction);
 
-        if(count($highestBids) === 0) {
+        if(count($highestBids) === 0 || count($highestBids) < $auction->getQuantity()) {
             return null;
         }
 
