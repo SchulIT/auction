@@ -48,7 +48,7 @@ class BidCrudController extends AbstractCrudController
             ,
             AssociationField::new('user')->setLabel('label.user'),
             MoneyField::new('amount')->setCurrency('EUR')->setLabel('label.amount'),
-            DateTimeField::new('createdAt')->setLabel('label.created_at'),
+            DateTimeField::new('createdAt')->setLabel('label.created_at')->setFormTypeOption('disabled', true),
         ];
     }
 
