@@ -31,7 +31,7 @@ class AdminMenuBuilder extends AbstractMenuBuilder {
 
         if($this->authorizationChecker->isGranted('ROLE_AUCTION_ADMIN')) {
             $menu->addChild('admin.label', [
-                'uri' => 'admin'
+                'uri' => '/admin'
             ])
                 ->setLinkAttribute('target', '_blank')
                 ->setExtra('icon', 'fas fa-tools');
