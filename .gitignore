@@ -117,3 +117,7 @@ yarn-error.log
 /config/packages/bentools_webpush.yaml
 *.rnd
 /public/favicon.ico
+###> symfony/asset-mapper ###
+/public/assets/
+/assets/vendor/
+###< symfony/asset-mapper ###

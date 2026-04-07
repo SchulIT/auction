@@ -1,0 +1,10 @@
+.summary-box {
+  > h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+
+  > p:last-child {
+    margin-bottom: 0;
+  }
+}

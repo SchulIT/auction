@@ -19,7 +19,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Symfony\Component\Validator\Constraints\Image;
-use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class AuctionCrudController extends AbstractCrudController
 {
@@ -79,7 +78,7 @@ class AuctionCrudController extends AbstractCrudController
                 ->setLabel('label.quantity.label')
                 ->setHelp('label.quantity.help'),
 
-            FormField::addPanel('label.bids')
+            FormField::addFieldset('label.bids')
                 ->onlyOnDetail(),
 
             CollectionField::new('bids')

@@ -1,0 +1,11 @@
+description: Über dieses Tool finden Auktionen im schulischen Kontext statt.
+
+role_attribute:
+    display_name: Auktion Rollen
+    description: Rollen im Auktion-Tool
+
+roles:
+    ROLE_ADMIN: Administrator
+    ROLE_AUCTION_ADMIN: Kann Auktionen verwalten
+    ROLE_AUCTION_PARTICIPANT: Benutzer (kann an Auktionen teilnehmen)
+    ROLE_USER: Benutzer (nur lesend)

@@ -38,16 +38,6 @@ class AdminMenuBuilder extends AbstractMenuBuilder {
         }
 
         if($this->authorizationChecker->isGranted('ROLE_ADMIN')) {
-            $menu->addChild('cron.label', [
-                'route' => 'admin_cronjobs'
-            ])
-                ->setExtra('icon', 'fas fa-history');
-
-            $menu->addChild('messenger.label', [
-                'route' => 'admin_messenger'
-            ])
-                ->setExtra('icon', 'fas fa-envelope-open-text');
-
             $menu->addChild('logs.label', [
                 'route' => 'admin_logs'
             ])

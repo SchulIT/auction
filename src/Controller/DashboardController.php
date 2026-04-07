@@ -9,6 +9,7 @@ use Symfony\Component\Routing\Attribute\Route;
 class DashboardController extends AbstractController {
     #[Route('')]
     #[Route('/', name: 'dashboard')]
+    #[Route('/', name: 'index')]
     public function index(): Response {
         return $this->redirectToRoute('auctions');
     }

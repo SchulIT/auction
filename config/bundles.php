@@ -17,8 +17,9 @@ return [
     FrostieDE\ComposerDependencyListBundle\ComposerDependencyListBundle::class => ['all' => true],
     SchulIT\CommonBundle\CommonBundle::class => ['all' => true],
     Knp\Bundle\MenuBundle\KnpMenuBundle::class => ['all' => true],
-    Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
     EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle::class => ['all' => true],
     Yceruto\MoneyBundle\MoneyBundle::class => ['all' => true],
     DH\AuditorBundle\DHAuditorBundle::class => ['all' => true],
+    Symfony\UX\TwigComponent\TwigComponentBundle::class => ['all' => true],
+    Chrisguitarguy\RequestId\ChrisguitarguyRequestIdBundle::class => ['all' => true],
 ];
