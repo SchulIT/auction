@@ -57,8 +57,9 @@ class DashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Übersicht', 'fa fa-home');
-        yield MenuItem::linkTo(AuctionCrudController::class, 'Auktionen', 'fas fa-list');
-        yield MenuItem::linkTo(BidCrudController::class, 'Gebote', 'fas fa-list');
-        yield MenuItem::linkTo(UserCrudController::class, 'Benutzer', 'fas fa-users');
+        yield MenuItem::linkToRoute('Allgemeine Einstellungen', 'fas fa-cogs', 'app_settings')->setPermission('ROLE_ADMIN');
+        yield MenuItem::linkTo(AuctionCrudController::class, 'Auktionen', 'fas fa-list')->setPermission('ROLE_AUCTION_ADMIN');
+        yield MenuItem::linkTo(BidCrudController::class, 'Gebote', 'fas fa-list')->setPermission('ROLE_AUCTION_ADMIN');
+        yield MenuItem::linkTo(UserCrudController::class, 'Benutzer', 'fas fa-users')->setPermission('ROLE_ADMIN');
     }
 }

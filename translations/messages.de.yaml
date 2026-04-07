@@ -96,3 +96,16 @@ admin:
       past: vergangene Auktionen
       upcoming: anstehende Auktionen
       bids: Gebote
+
+settings:
+  success: Einstellungen erfolgreich gespeichert
+
+  app:
+    label: Allgemeine Einstellungen
+    custom_css:
+      label: Benutzerdefiniertes CSS
+      help: Hier kann benutzerdefiniertes CSS eingebunden werden, um die Software nach eigenen Wünschen einzufärben.
+
+actions:
+  save: speichern
+  cancel: abbrechen

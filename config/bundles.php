@@ -22,4 +22,5 @@ return [
     DH\AuditorBundle\DHAuditorBundle::class => ['all' => true],
     Symfony\UX\TwigComponent\TwigComponentBundle::class => ['all' => true],
     Chrisguitarguy\RequestId\ChrisguitarguyRequestIdBundle::class => ['all' => true],
+    Jbtronics\SettingsBundle\JbtronicsSettingsBundle::class => ['all' => true],
 ];

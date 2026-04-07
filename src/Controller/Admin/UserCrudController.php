@@ -27,6 +27,7 @@ class UserCrudController extends AbstractCrudController
 
     public function configureCrud(Crud $crud): Crud {
         return $crud
+            ->setEntityPermission('ROLE_ADMIN')
             ->setEntityLabelInSingular('Benutzer')
             ->setEntityLabelInPlural('Benutzer');
     }

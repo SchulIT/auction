@@ -14,6 +14,7 @@
         "doctrine/doctrine-migrations-bundle": "^3.3",
         "doctrine/orm": "^3.3",
         "easycorp/easyadmin-bundle": "^4.14",
+        "jbtronics/settings-bundle": "^3.2",
         "knplabs/knp-menu-bundle": "^3.4",
         "league/commonmark": "^2.5",
         "lightsaml2/lightsaml": "*",
