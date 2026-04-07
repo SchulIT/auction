@@ -24,6 +24,8 @@ sidebar_position: 1
   * tokenizer
   * xml
   * xmlwriter
+  * zstd
+  * zlib
 * MariaDB 10.4+ (ein kompatibles MySQL kann funktionieren, ist jedoch nicht getestet)
 * Composer 2+
 * Git (zum einfachen Einspielen der Software)

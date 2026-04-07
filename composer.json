@@ -8,6 +8,8 @@
         "ext-bcmath": "*",
         "ext-ctype": "*",
         "ext-iconv": "*",
+        "ext-zstd": "*",
+        "ext-zlib": "*",
         "damienharper/auditor-bundle": "^6.2",
         "doctrine/dbal": "^3",
         "doctrine/doctrine-bundle": "^2.13",
