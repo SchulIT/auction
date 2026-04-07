@@ -11,6 +11,7 @@ doctrine:
         connections:
             default:
                 url: '%env(resolve:DATABASE_URL)%'
+                server_version: '%env(resolve:DATABASE_SERVER_VERSION)%'
                 charset: utf8mb4
                 driver: 'pdo_mysql'
                 default_table_options:
@@ -19,6 +20,7 @@ doctrine:
                 schema_filter: ~^(?!(sessions))~
             logger:
                 url: '%env(resolve:DATABASE_URL)%'
+                server_version: '%env(resolve:DATABASE_SERVER_VERSION)%'
                 charset: utf8mb4
                 driver: 'pdo_mysql'
                 default_table_options:
